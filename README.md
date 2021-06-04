@@ -1,2 +1,2 @@
-# brief_jango
+# brief_django
 premier projet django
