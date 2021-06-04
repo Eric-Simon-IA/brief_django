@@ -1,0 +1,19 @@
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block style %}<link rel="stylesheet" type="text/css" href="{%  static 'css/app.css' %}">{% endblock %}
+    <title>{% block title %}Gestion des employés{% endblock %}</title>
+</head>
+<body>
+    <ul class="ulnav">
+        <li class="linav"><a href="/employes/dep_list">Liste des départements</a></li>
+        <li class="linav"><a href="/employes/dep_update_create">Création de département</a></li>
+        <li class="linav"><a href="/employes/dep_emp">Visualisation globale</a></li>
+    </ul>
+    <h1>Application de gestion des employés</h1>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

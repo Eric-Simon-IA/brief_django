@@ -1,0 +1,32 @@
+{% extends 'employes/base.html' %}
+{% block title %}
+Employés par département
+{% endblock %}
+
+{% block content %}
+<h1>Employés par département</h1>
+
+    <table>
+    <tr>
+        <th>Intitulé</th>
+        <th>Etage</th>
+        <th>Employés</th>
+    </tr>
+
+    {% for dep in dep_result %}
+    <tr>
+        <td>{{ dep.intitule }}</td>
+        <td>{{ dep.etage }}</td>
+
+        <td>
+            <ol>
+            {% for emp in dep.employes.all %}
+                <li>Nom : {{ emp.nom }}  - Prénom : {{ emp.prenom }} - Poste : {{ emp.poste }} - Salaire : {{ emp.salaire }}</li>
+            {% endfor %}
+            </ol>
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,96 @@
+html{
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(14, 14, 14, 0.61) 70.71%),
+            linear-gradient(127deg, rgba(0, 0, 0, 0.8), rgba(160, 4, 4, 0.99) 70.71%),
+            linear-gradient(336deg, rgba(0, 0, 0, 0.8), rgba(135, 3, 3, 0) 70.71%);
+}
+
+body {
+    display:flow;
+    font-family: sans-serif;
+    text-align: center;
+    font-size:15px;
+    min-height: 100%;
+    width: 100%;
+    color: #ffffff;
+}
+img {
+    height: auto;
+    width: 20%;
+}
+
+h1,h2 {
+    color: #f1f0f0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 25px;
+}
+
+a {
+    color: #ffffff;
+}
+
+a:link {
+    color: #7289da;
+}
+
+a:visited {
+    color: #99aab5;
+}
+
+a:focus {
+    color: #ffffff;
+}
+
+a:hover {
+    color: #7289da;
+}
+
+a:active {
+    color: #ffffff;
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+th {
+  background-color: #23272a;
+  color: white;
+}
+
+tr {
+  background-color: #124666;
+  color: white;
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+.ulnav{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.linav {
+  float: left;
+}
+
+.linav a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px!important;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.linava:hover {
+  background-color: #111;
+}

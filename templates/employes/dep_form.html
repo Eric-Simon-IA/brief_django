@@ -1,0 +1,16 @@
+{% extends 'employes/base.html' %}
+{% block title %}
+Détail du département
+{% endblock %}
+
+{% block content %}
+<h2>Détail du département {{ dep.intitule }} situé à l'étage {{ dep.etage }}</h2>
+
+    <form action="/employes/dep_update_create" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'employes/base.html' %}
+{% block title %}
+Détail du département
+{% endblock %}
+
+{% block content %}
+<h2>Détail du département {{ dep.intitule }} situé à l'étage {{ dep.etage }}</h2>
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Ville</th>
+        <th>Poste</th>
+        <th>Age</th>
+        <th>Salaire</th>
+        <th>Suppression</th>
+    </tr>
+
+    {% for emp in dep.employes %}
+    <tr>
+        <td>{{ emp.nom }}</td>
+        <td>{{ emp.prenom }}</td>
+        <td>{{ emp.ville }}</td>
+        <td>{{ emp.poste }}</td>
+        <td>{{ emp.age }}</td>
+        <td>{{ emp.salaire }} €</td>
+        <td><a href="/employes/emp_delete?id={{ emp.id }}&depid={{ emp.departement_id }}">Supprimer</a></td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

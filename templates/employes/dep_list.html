@@ -1,0 +1,32 @@
+{% extends 'employes/base.html' %}
+{% block title %}
+Départements
+{% endblock %}
+
+{% block content %}
+<h2>Départements</h2>
+    <p>
+        Créer un nouveau département : <a href="/employes/dep_update_create">Création</a>
+    </p>
+<table>
+    <tr>
+        <th>Intitulé</th>
+        <th>Etage</th>
+        <th>Details</th>
+        <th>Mise à jour</th>
+        <th>Suppression</th>
+    </tr>
+
+    {% for dep in depts %}
+    <tr>
+        <td>{{ dep.intitule }}</td>
+        <td>{{ dep.etage }}</td>
+        <td><a href="/employes/dep_detail?id={{ dep.id }}">Détails</a></td>
+        <td><a href="/employes/dep_update_create?id={{ dep.id }}">Update</a></td>
+        <td><a href="/employes/dep_delete?id={{ dep.id }}">Supprimer</a></td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
