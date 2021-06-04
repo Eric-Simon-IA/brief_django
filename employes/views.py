@@ -4,6 +4,7 @@ from rest_framework import viewsets
 
 from .forms import *
 from .models import *
+from .error_reporting import *
 from .serializers import DepartementSerializer, EmployeSerializer
 
 
@@ -26,7 +27,9 @@ def dep_list(request):
     :return: render du template de listing des départements
     """
     req = requests.get('http://127.0.0.1:8000/employes/api/dept/')
-    print(req.json())
+
+    if req.status_code > 299:
+        log_error(req.url,req.request.method,req.status_code,req.reason)
 
     context = {'depts': req.json()}
     return render(request, "employes/dep_list.html", context)
@@ -40,6 +43,8 @@ def dep_delete(request):
     """
     idDep = request.GET['id']
     req = requests.delete('http://127.0.0.1:8000/employes/api/dept/' + idDep)
+    if req.status_code > 299:
+        log_error(req.url,req.request.method,req.status_code,req.reason)
 
     return redirect("dep_list")
 
@@ -52,6 +57,8 @@ def dep_detail(request):
     """
     idDep = request.GET['id']
     req = requests.get('http://127.0.0.1:8000/employes/api/dept/' + idDep)
+    if req.status_code > 299:
+        log_error(req.url,req.request.method,req.status_code,req.reason)
     print(req.json())
 
     context = {'dep': req.json()}
@@ -67,6 +74,8 @@ def emp_delete(request):
     idEmp = request.GET['id']
     idDep = request.GET['depid']
     req = requests.delete('http://127.0.0.1:8000/employes/api/emp/' + idEmp)
+    if req.status_code > 299:
+        log_error(req.url,req.request.method,req.status_code,req.reason)
 
     return redirect("/employes/dep_detail?id=" + idDep)
 
@@ -107,8 +116,12 @@ def dep_update_create(request):
             id_dep = request.POST.get('id', "")
             if id_dep == "":
                 req = requests.post('http://127.0.0.1:8000/employes/api/dept/', data=request.POST)
+                if req.status_code > 299:
+                    log_error(req.url, req.request.method, req.status_code, req.reason)
             else:
                 req = requests.put('http://127.0.0.1:8000/employes/api/dept/' + id_dep + '/', data=request.POST)
+                if req.status_code > 299:
+                    log_error(req.url, req.request.method, req.status_code, req.reason)
             return redirect("dep_list")
 
     # Si ce n'est pas un post on est au premier chargement du formulaire
@@ -118,10 +131,14 @@ def dep_update_create(request):
         if id != '':
             # On récupère le département
             req1 = requests.get('http://127.0.0.1:8000/employes/api/dept/' + id)
+            if req1.status_code > 299:
+                log_error(req1.url, req1.request.method, req1.status_code, req1.reason)
             # Et on initialise le form
             form = DepForm(initial=req1.json())
+            mode = 'modification'
         else:
             # form vierge
             form = DepForm()
+            mode = 'création'
 
-    return render(request, 'employes/dep_form.html', {'form': form})
+    return render(request, 'employes/dep_form.html', {'form': form, 'mode':mode})

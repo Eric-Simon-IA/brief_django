@@ -4,7 +4,7 @@ Détail du département
 {% endblock %}
 
 {% block content %}
-<h2>Détail du département {{ dep.intitule }} situé à l'étage {{ dep.etage }}</h2>
+<h2>Formulaire de {{ mode }} d'un département</h2>
 
     <form action="/employes/dep_update_create" method="post">
         {% csrf_token %}

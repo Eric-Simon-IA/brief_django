@@ -1,0 +1,5 @@
+heure;URL;type;code;message
+14:43:12;http://127.0.0.1:8000/employes/api/dept/875/;GET;404;Not Found
+14:44:04;http://127.0.0.1:8000/employes/api/dept/875/;GET;404;Not Found
+14:45:16;http://127.0.0.1:8000/employes/api/dept/8785/;DELETE;404;Not Found
+14:47:55;http://127.0.0.1:8000/employes/api/dept/878/;GET;404;Not Found
