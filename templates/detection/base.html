@@ -1,0 +1,22 @@
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block style %}<link rel="stylesheet" type="text/css" href="{%  static 'css/app.css' %}">{% endblock %}
+    <title>{% block title %}DiscoETECT{% endblock %}</title>
+</head>
+<body>
+
+    <div class="container">
+        <ul class="ulnav">
+            <li class="linav"><a href="/detection_client/clients">Liste des clients</a></li>
+            <li class="linav"><a href="/detection_client/photos">Prises de photo enregistrées</a></li>
+            <li class="linav"><a href="/detection_client/new_photo">Uploader une nouvelle photo</a></li>
+        </ul>
+        <h1><b>D</b>isco<b>ETECT</b> : Système de détection pour boites de nuits</h1>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

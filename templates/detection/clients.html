@@ -1,0 +1,26 @@
+{% extends 'detection/base.html' %}
+{% block title %}
+Clients
+{% endblock %}
+
+{% block content %}
+<h1>Clients enregistrés</h1>
+
+    <table>
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Numéro de membre</th>
+        <th>Détail des détections</th>
+    </tr>
+
+    {% for cli in cli_result %}
+    <tr>
+        <td>{{ cli.nom }}</td>
+        <td>{{ cli.prenom }}</td>
+        <td>{{ cli.carte_membre }}</td>
+        <td><a href="/detection_client/client_detail?id={{ cli.id }}">Détections</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

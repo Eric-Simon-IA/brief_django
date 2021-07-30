@@ -1,0 +1,25 @@
+{% extends 'detection/base.html' %}
+{% block title %}
+Clients
+{% endblock %}
+
+{% block content %}
+<h1>Historique de détection du client  {{ cli.nom }} {{ cli.prenom }}</h1>
+<table>
+    <tr>
+        <th>Horodatage</th>
+        <th>Aperçu</th>
+        <th>Photo</th>
+    </tr>
+
+    {% for hist in historiques %}
+    <tr>
+        <td>{{ hist.photo.dateTime }}</td>
+        <td><img src={{ hist.face.thumbnail }} alt="miniature"></td>
+        <td><a href="/detection_client/det_photo?id={{ hist.photo.id }}">Consulter la photo</a></td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

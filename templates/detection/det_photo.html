@@ -1,0 +1,35 @@
+{% extends 'detection/base.html' %}
+{% block title %}
+Détail Photo
+{% endblock %}
+
+{% block content %}
+    <h1>Détail de la photo</h1>
+    <table>
+        <tr>
+            <th>Date de la prise</th>
+        </tr>
+        <tr>
+            <td>{{ photo_result.dateTime }}</td>
+        </tr>
+    </table>
+    <div><img src="{{ photo_result.picture.url }}" alt="miniature" style="max-height:500px;max-width:1500px;height:auto;width:auto;"></div>
+        <table>
+        <tr>
+            <th>Visage</th>
+            <th>Nom client</th>
+            <th>Prénom client</th>
+            <th>Modification</th>
+        </tr>
+
+        {% for hist in historiques %}
+        <tr>
+            <td><img src={{ hist.face.thumbnail }} alt="miniature"></td>
+            <td>{{ hist.client.nom }}</td>
+            <td>{{ hist.client.prenom }}</td>
+            <td><a href="/detection_client/edithisto/{{ hist.id }}">Update</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

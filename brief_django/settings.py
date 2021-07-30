@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from deepface import DeepFace
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -27,6 +30,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Application definition
 
@@ -37,8 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'detection_client.apps.DetectionClientConfig',
     'employes.apps.EmployesConfig',
-    'rest_framework'
+    'rest_framework',
+    'versatileimagefield'
 ]
 
 MIDDLEWARE = [
@@ -52,6 +60,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'brief_django.urls'
+DEFAULT_USER = "##DEFAULTUSER##"
+MODEL_NAME = 'VGG-Face'
+MODEL = DeepFace.build_model("VGG-Face")
+IMG_DB_PATH = os.path.join(MEDIA_ROOT, r"detection_client\detected")
 
 TEMPLATES = [
     {

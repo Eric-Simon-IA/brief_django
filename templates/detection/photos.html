@@ -1,0 +1,24 @@
+{% extends 'detection/base.html' %}
+{% block title %}
+Photos
+{% endblock %}
+
+{% block content %}
+<h1>Photos enregistrés</h1>
+
+    <table>
+    <tr>
+        <th>Horodatage</th>
+        <th>Miniature</th>
+        <th>Détail</th>
+    </tr>
+
+    {% for photo in photo_result %}
+    <tr>
+        <td>{{ photo.dateTime }}</td>
+        <td><img src={{ photo.picture.thumbnail }} alt="miniature"></td>
+        <td><a href="/detection_client/det_photo?id={{ photo.id }}">Consulter la photo</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

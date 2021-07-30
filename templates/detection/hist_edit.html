@@ -1,0 +1,31 @@
+{% extends 'detection/base.html' %}
+{% block title %}
+Photos
+{% endblock %}
+
+{% block content %}
+    <h1>Modification de la reconnaissance faciale</h1>
+    <div><img src="{{ hist.photo.picture.url }}" alt="miniature" style="max-height:500px;max-width:1500px;height:auto;width:auto;"></div>
+        <table>
+        <tr>
+            <th>Visage</th>
+            <th>Nom client</th>
+            <th>Prénom client</th>
+        </tr>
+
+        <tr>
+            <td><img src={{ dic_hist.face.thumbnail }} alt="miniature"></td>
+            <td>{{ hist.client.nom }}</td>
+            <td>{{ hist.client.prenom }}</td>
+
+        </tr>
+
+    </table>
+
+    <form action="{% url 'histo_edit' hist.id %}" method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+    <button class="button" type="submit">Mise à jour</button>
+    </form>
+
+{% endblock %}
