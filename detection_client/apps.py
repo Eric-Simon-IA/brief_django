@@ -8,15 +8,15 @@ from tqdm import tqdm
 
 
 def build_database_file(file_name):
-    employees = []
+    lst_photos = []
 
     for r, d, f in os.walk(settings.IMG_DB_PATH):  # r=root, d=directories, f = files
         for file in f:
             if ('.jpg' in file.lower()) or ('.png' in file.lower()):
                 exact_path = r + "/" + file
-                employees.append(exact_path)
+                lst_photos.append(exact_path)
 
-    if len(employees) == 0:
+    if len(lst_photos) == 0:
         raise ValueError("There is no image in ", settings.IMG_DB_PATH, "folder! Validate .jpg or .png files exist in "
                                                                         "this path.")
 
@@ -25,16 +25,16 @@ def build_database_file(file_name):
 
     representations = []
 
-    pbar = tqdm(range(0, len(employees)), desc='Finding representations', disable=False)
+    pbar = tqdm(range(0, len(lst_photos)), desc='Finding representations', disable=False)
 
     # for employee in employees:
     for index in pbar:
-        employee = employees[index]
+        photo = lst_photos[index]
 
         instance = []
-        instance.append(employee)
+        instance.append(photo)
 
-        representation = represent(img_path=employee
+        representation = represent(img_path=photo
                                    , model_name=settings.MODEL_NAME, model=settings.MODEL
                                    , enforce_detection=False, detector_backend="retinaface"
                                    , align=True)
