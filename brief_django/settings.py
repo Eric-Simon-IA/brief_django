@@ -62,7 +62,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'brief_django.urls'
 DEFAULT_USER = "##DEFAULTUSER##"
 MODEL_NAME = 'VGG-Face'
-MODEL = DeepFace.build_model("VGG-Face")
+MODEL = DeepFace.build_model(MODEL_NAME)
 IMG_DB_PATH = os.path.join(MEDIA_ROOT, r"detection_client\detected")
 
 TEMPLATES = [
